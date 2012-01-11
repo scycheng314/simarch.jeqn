@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<body>
+Provides <code>jEQN</code> components to simulate User Waiting Systems.
+<p>It is futher subdivided into {@link policies}, {@link storages} and {@link times}.</p>
+<p>There are two kind of Waiting Systems made available: <code>PreemptiveWaitingSyste</code>
+    and <code>NonPreemptiveWaitingSystem</code>.
+</p>
+<p>The former simulates a user waiting system that allows incoming user to preempt
+user under process if certain conditions are met.</p>
+<p>The latter simulates a user waiting system that acts passively compared to the
+preemptive one as it waits for next user request to forward a new user to the in cascade
+<code>jEQN</code> entity.</p>
+
+<p>Each type must be properly connected to a <code>ServiceCenter</code> which behaviour
+supports to the dynamic of the specific type.</p>
+
+<p>Each type can be built up by setting its properties</p>
+
+@see it.uniroma2.info.sel.simlab.jeqn.serviceCenters
+</body>
