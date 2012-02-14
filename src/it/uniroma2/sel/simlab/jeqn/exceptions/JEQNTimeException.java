@@ -29,14 +29,27 @@ package it.uniroma2.sel.simlab.jeqn.exceptions;
  */
 public class JEQNTimeException extends JEQNException {
     
-    /** Creates a new instance of JEQNTimeException */
+    /** Creates a new JEQNTimeException with {@code null} as its detail message
+     * 
+     */
     public JEQNTimeException() {
     }
     
+    /**
+     * Create a new JEQNTimeException wrapping an existing exception.
+     * The existing exception will be embedded in the new one, and its message will become the default message.
+     * 
+     * @param	e	The exception to be wrapped in a JEQNQueueOverflowException
+     * */
     public JEQNTimeException(final Exception e) {
         super(e);
     }
     
+    /**
+     * Creates a new JEQNTimeException with the specified error message.
+     * 
+     * @param	s	error message
+     * */
     public JEQNTimeException(final String s) {
         super(s);
     }

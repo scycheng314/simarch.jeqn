@@ -26,7 +26,11 @@ import it.uniroma2.sel.simlab.jeqn.users.Category;
 
 import java.util.HashMap;
 
-/** Defines a mapping service request generator for multiple categories
+/** 
+ * Creates a multiple category service request generator by specifying a mapping between service request generators and categories.
+ * 
+ * @see it.uniroma2.sel.simlab.jeqn.requests.MultiCatServiceRequestGenerator
+ * @see it.uniroma2.sel.simlab.jeqn.requests.SingleCatServiceRequestGenerator
  *
  * @author Daniele Gianni
  */
@@ -34,15 +38,17 @@ public class MapMultiCatServiceRequestGenerator extends MultiCatServiceRequestGe
     
     protected HashMap <Category, SingleCatServiceRequestGenerator> categoryToServiceRequestGeneratorMap;
     
-    /** Creates a new instance of MapMultiCatServiceRequestGenerator */
+    /** 
+     * Creates a new MapMultiCatServiceRequestGenerator that allows to associate a single category service request generator for each different category.
+     * */
     public MapMultiCatServiceRequestGenerator() {
         categoryToServiceRequestGeneratorMap = new HashMap<Category, SingleCatServiceRequestGenerator>(); 
     }
 
     /**
-     * Assignes the individual category service generator to the category
-     * @param c
-     * @param g
+     * Associates the specified single category service request generator to the specified category.
+     * @param c	Category for which the service request generator is specified.
+     * @param g Single category service request generator to be associated to the category.
      */
     public void put(final Category c, final SingleCatServiceRequestGenerator g) {
         categoryToServiceRequestGeneratorMap.put(c, g);

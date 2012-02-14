@@ -29,16 +29,26 @@ package it.uniroma2.sel.simlab.jeqn.errors;
 public class JEQNError extends Error {
     
     /**
-     * Creates a new instance of JEQNError
+     * Creates a new JEQNError.
      */
     public JEQNError() {
         super();
     }
     
+    /**
+     * Creates a new JEQNError wrapping an existing throwable object.
+     * 
+     * @param	t	Throwable object to be wrapped
+     * */
     public JEQNError(final Throwable t) {
         super(t);
     }
-   
+    
+    /**
+     * Creates a new JEQNError with the specified specified detail message
+     * 
+     * @param	s	error message
+     * */
     public JEQNError(final String s) {
         super(s);
     }

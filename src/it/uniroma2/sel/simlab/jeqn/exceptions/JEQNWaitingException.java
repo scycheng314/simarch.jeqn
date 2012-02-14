@@ -22,20 +22,34 @@
 
 package it.uniroma2.sel.simlab.jeqn.exceptions;
 
-/**
- *
- * @author Daniele Gianni
- */
+/** 
+ * Indicates that a general issue on a waiting system has been detected.
+*
+* @author Daniele Gianni
+*/
 public class JEQNWaitingException extends JEQNException {
     
-    /** Creates a new instance of JEQNWaitingException */
+    /** 
+     * Creates a new JEQNWaitingException with {@code null} as its detail message.
+     * */
     public JEQNWaitingException() {
     }
     
+    /**
+     * Create a new JEQNWaitingException wrapping an existing exception.
+     * The existing exception will be embedded in the new one, and its message will become the default message.
+     * 
+     * @param	e	The exception to be wrapped in a JEQNQueueOverflowException
+     * */
     public JEQNWaitingException(final Exception e) {
         super(e);
     }
     
+    /**
+     * Creates a new JEQNException with the specified error message.
+     * 
+     * @param	s	error message
+     * */
     public JEQNWaitingException(final String s) {
         super(s);
     }

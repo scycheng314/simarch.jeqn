@@ -25,30 +25,52 @@ package it.uniroma2.sel.simlab.jeqn.requests;
 import it.uniroma2.sel.simlab.jeqn.general.JEQNTimeFactory;
 import it.uniroma2.sel.simlab.simarch.data.Time;
 
-/** Represents the user service request to a service center
- *
+/** 
+ * A @code{ServiceRequest} object wraps a {@code Time} object, which represents the amount of time that an user requests to the next service center
+ * 
+ * @see it.uniroma2.sel.simlab.simarch.data.Time	
  * @author  Daniele Gianni
  */
 public class ServiceRequest {
     
     private Time value;
     
+    /**
+     * Creates a new ServiceRequest with {@code 0} as its service request.
+     */
     public ServiceRequest() {
         setValue(JEQNTimeFactory.makeFrom(Time.ZERO));
     } 
     
+    /**
+     * Creates a new ServiceRequest with the specified service request value.
+     * 
+     * @param	t	amount of time that an user requests to the next service center
+     */
     public ServiceRequest(final Time t) {
         setValue(t);
     }
     
+    /**
+     *	Gets the service request value.
+     *	 
+     * @return	{@code Time} object that contains the service request value.
+     */
     public Time getValue() {
         return value;
     }
     
+    /**
+     * Sets the service request value.
+     * @param t	{@code Time} object that contains the service request value.
+     */
     public void setValue(final Time t) {
         value = t;
     }
     
+    /**
+     * Returns a string that shows the service request value.
+     */
     public String toString() {
         return "ServiceRequest " + value;
     }

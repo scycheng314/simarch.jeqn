@@ -23,7 +23,8 @@
 package it.uniroma2.sel.simlab.jeqn.events;
 
 /**
- *
+ * Enum type which specifies the events that may occur
+ *  
  * @author Daniele Gianni
  */
 public enum Events {

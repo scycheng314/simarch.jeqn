@@ -25,19 +25,31 @@ package it.uniroma2.sel.simlab.jeqn.requests;
 import it.uniroma2.sel.simlab.jeqn.users.Category;
 import it.uniroma2.sel.simlab.jeqn.users.User;
 
-/** Defines a service generator for multiple categories
+/** Defines the abstract class which specifies the interface of the multiple categories service requests generator 
  *
  * @author Daniele Gianni
  */
 public abstract class MultiCatServiceRequestGenerator extends ServiceRequestGenerator {       
         
-    /** Creates a new instance of MultiCatServiceRequestGenerator */
+    /** 
+     * Creates a new MultiCatServiceRequestGenerator 
+     * */
     public MultiCatServiceRequestGenerator() {
     } 
     
+    /**
+     * Gets the next service request associated to the category of the specified user. 
+     * @param u	user for which the service request is to be retrieved.
+     * @return	@{ServiceRequest} object that wraps the service request.
+     */
     public ServiceRequest getNext(final User u) {
         return getNext(u.getCategory());
     }
     
+    /**
+     * Gets the next service request associated to the specified category. 
+     * @param c	category for which the service request is to be retrieved.
+     * @return	@{ServiceRequest} object that wraps the service request.
+     */
     public abstract ServiceRequest getNext(final Category c);
 }

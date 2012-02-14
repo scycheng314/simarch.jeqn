@@ -27,14 +27,17 @@ import it.uniroma2.sel.simlab.jeqn.users.Category;
 
 import java.util.Map;
 
-/** Defines a user category based routing policy, ie in which the output port depends on (and only) on the
- * user category. Specifically, this class is defined as specialization of a mapping policy
+/** Defines a user-category based routing policy, according to which the output port depends on the
+ * user category. Specifically, this class is defined as a specialization of a mapping policy
  *
  * @author Daniele Gianni
  */
 public class CategoryBasedRoutingPolicy extends MapImplicitAndExplicitInputDependentPolicy<Category, Integer>{
     
-    /** Creates a new instance of CategoryBasedRoutingPolicy */
+    /**
+     * Creates a new CategoryBasedRoutingPolicy with the specified mapping between category and output port index.
+     * @param m {@code Map} object that associate an {@code Integer} object, which wraps the output port index, to a {@code Category}.
+     */
     public CategoryBasedRoutingPolicy(final Map<Category, Integer> m) {
         super(m);
     }    

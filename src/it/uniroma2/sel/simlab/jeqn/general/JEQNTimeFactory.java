@@ -25,16 +25,16 @@ package it.uniroma2.sel.simlab.jeqn.general;
 import it.uniroma2.sel.simlab.simarch.data.Time;
 import it.uniroma2.sel.simlab.simcomp.basic.data.BasicTime;
 
-/** Enables the instantiation of jEQN Time instances
+/** Factory to instantiate a jEQNTime instances that handles the simulation time.
  *
  * @author Daniele Gianni
  */
 public class JEQNTimeFactory {
 
-    /** Instantiates a jEQN time object
+    /** Create a jEQN time object.
      *
-     * @param n the number containing the value for the time
-     * @return the instance of time at n.value
+     * @param n the number value representing the time.
+     * @return the instance of time with value n
      */
     public static Time makeFrom(final Number n) {        
         return new BasicTime(n);        
@@ -42,7 +42,7 @@ public class JEQNTimeFactory {
 
     /** Instantiates a jEQN time object
      *
-     * @param d the double value for the time
+     * @param d the double value representing the time
      * @return the instance of time with value d
      */
     public static Time makeFrom(final double d) {        

@@ -25,19 +25,26 @@ package it.uniroma2.sel.simlab.jeqn.routers.policies.routing;
 import it.uniroma2.sel.simlab.jeqn.policies.ImplicitButNotExplicitInputOnlyDependentPolicy;
 import it.uniroma2.sel.simlab.jrand.objectStreams.numericStreams.IntegerStream;
 
-/** Defines a routing policy that relies on an internal sequence of number for the determination of the output port.
- * This class might be useful in testing environments, in which the routing might be constrainted to reproduce
+/** Implements a routing policy that relies on an internal sequence of number to determine the output port.
+ * This class might be useful in testing environments, in which the routing might be constrained to reproduce
  * particular scenarios.
  *
  * @author Daniele Gianni
  */
 public class NumericSequenceBasedRoutingPolicy extends ImplicitButNotExplicitInputOnlyDependentPolicy<IntegerStream, Integer> {
     
-    /** Creates a new instance of NumericSequenceBasedRoutingPolicy */
+    /** 
+     * Creates a new NumericSequenceBasedRoutingPolicy
+     * @param implicitInput	numeric stream used to determine the policy decision and, ultimately, the output port.
+     */
     public NumericSequenceBasedRoutingPolicy(final IntegerStream implicitInput) {
         super(implicitInput);
     }
-
+    
+    /**
+     * Returns the {@code Integer} object that constitutes the policy decision, which wraps the output port index.
+     * @return The {@code Integer} object that wraps the output port index.
+     */
     public Integer getDecision() {
         return implicitInput.getNext();
     }    

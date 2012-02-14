@@ -50,7 +50,7 @@ import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Represents the router simulation component
+/** Implements the simulation logic of a EQN router component.
  *
  * @author  Daniele Gianni
  */
@@ -59,18 +59,18 @@ public class Router extends JEQNElement {
     // enables the printing of statistics
     private static final Boolean STATS = true;
 
-    /* port of incoming users in the router
+    /* incoming user port
      *
      */
     protected InPort inPort;
 
-    /* the list of out possible output ports
+    /* the list of output ports
      *
      */
     protected List<OutPort> outPorts;
 
     /*
-     * the policy determining how the outpurt port is chosen for each incoming user
+     * the policy determining how the output port is chosen for each incoming user
      */
     protected MaskBasePolicy<?, User, ?, Integer> routingPolicy;
 
@@ -104,7 +104,18 @@ public class Router extends JEQNElement {
      */
     protected int usersRoutedToPorts[];
 
-    /** Creates a new instance of Router */
+    /**
+     * Creates a new Router element in the EQN network 
+     * @param name	Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.	
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param tdelay	delay introduced by the router to propagate an user to the output port. 
+     * @param numberOfOutPorts	{@code Integer} object that specifies the number of output ports.
+     * @param routingPolicy	{@code MaskBasePolicy} object that implements the policy used to determine the the output port to which incoming users are to be routed. 
+     * @throws InvalidNameException	n InvalidNameException is raised when an issue concerning the element name occurs.
+     * 
+     */
+     
     public Router(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final Time tdelay, final Integer numberOfOutPorts, final MaskBasePolicy<?, User, ?, Integer> routingPolicy /*, final DecisionDataFactory<?, ?> ddFactory */) throws InvalidNameException {
         super(name, timeFactory, factory);
 
@@ -121,7 +132,11 @@ public class Router extends JEQNElement {
         // input port initialization
         inPort = new InPort(new JEQNName("inPort"), this);
 
-        // output ports initialization
+        /*
+         *  Output ports initialization.
+         *  Output ports are implemented as an array, so that ports are identified by the related index.
+         */
+        
         outPorts = new ArrayList<OutPort>();
 
         for (int j = 0; j < i; j++) {
@@ -137,7 +152,10 @@ public class Router extends JEQNElement {
         routingDelay = new DiscretePopulationMean();
         outgoingTimes = new SortedList();
     }
-
+    
+    /**
+     * Contains the simulation logic of the element.
+     */
     public void body() throws JEQNException {
 
         Event event;
@@ -199,25 +217,46 @@ public class Router extends JEQNElement {
             System.err.println(getFullName());
         }
     }
-
+    
+    /**
+     * Returns the router input port
+     * @return Router input port
+     */
     public InPort getInPort() {
         return inPort;
     }
-
+    
+    /**
+     * Returns the router output port identified by the specified numeric index
+     * @param i	index that identifies an {@code OutPort} whithin the {@code outPorts} array.
+     * @return the router output port identified by the specified index
+     */
     public OutPort getOutPort(final int i) {
         return outPorts.get(i);
     }
-
+    
+    /**
+     * Returns the {@code outPorts} object that implements the array of output ports.
+     * @return array of output ports.
+     */
     public List<OutPort> getOutPorts() {
         return outPorts;
     }
-
+    
+    /**
+     * Returns the number of user still in the router (ie routed but still to be delivered to the recipient entity)
+     * 
+     * @return number of users still to be delivered to the recipient entity.
+     */
     public int getUsersInRouting() {
         /*if (outgoingTimes.isEmpty()) return 0;
         else */
         return outgoingTimes.size();
     }
-
+    
+    /**
+     * Prints the statistics data gathered by the component during the simulation.
+     */
     public void printStatistics() {
 
         if (STATS) {
@@ -253,7 +292,11 @@ public class Router extends JEQNElement {
     protected void setDelay(final Time t) {
         delay = t;
     }
-
+    
+    /**
+     * Sets the list of output ports
+     * @param ps	list of output ports
+     */
     public void setOutPorts(final List<OutPort> ps) {
         outPorts = ps;
     }

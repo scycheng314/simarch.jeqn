@@ -28,7 +28,7 @@ import it.uniroma2.sel.simlab.simarch.exceptions.InvalidNameException;
 import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 import it.uniroma2.sel.simlab.simcomp.basic.entities.BasicComponentLevelEntity;
 
-/** Defines the basic jEQN element by extending the BasicCOmponentLevelEntity (simcomp project)
+/** Defines the basic jEQN element by extending the BasicCOmponentLevelEntity (simcomps)
  * and by introducing the factory for jEQN time.
  *
  * @author Daniele Gianni
@@ -36,6 +36,14 @@ import it.uniroma2.sel.simlab.simcomp.basic.entities.BasicComponentLevelEntity;
 public abstract class JEQNElement extends BasicComponentLevelEntity<User, Events> { //<User, Events> {
     
     protected JEQNTimeFactory timeFactory;
+    
+    /** Create a new JEQNElement.
+     *
+     * @param	name	Element name. The name is used to identify entities within the simulation model.
+     * @param	timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param	factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @throws	InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs. 
+     */
     
     public JEQNElement(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory) throws InvalidNameException {        
         super(name, factory);

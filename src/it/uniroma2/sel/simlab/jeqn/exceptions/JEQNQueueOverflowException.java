@@ -24,28 +24,44 @@ package it.uniroma2.sel.simlab.jeqn.exceptions;
 
 import it.uniroma2.sel.simlab.jeqn.users.User;
 
-/**
- *
- * @author Daniele Gianni
- */
+/** Indicates that a queue overflow has been detected
+*
+* @author Daniele Gianni
+*/
 public class JEQNQueueOverflowException extends JEQNWaitingException {
     
     protected User user;
     
     /**
-     * Creates a new instance of JEQNQueueOverflowException
+     * Creates a new JEQNQueueOverflowException with {@code null} as its detail message.
      */
     public JEQNQueueOverflowException() {
     }
     
+    /**
+     * Create a new JEQNQueueOverflowException wrapping an existing exception.
+     * The existing exception will be embedded in the new one, and its message will become the default message.
+     * 
+     * @param	e	The exception to be wrapped in a JEQNQueueOverflowException
+     * */
     public JEQNQueueOverflowException(final Exception e) {
         super(e);
     }
     
+    /**
+     * Creates a new JEQNConfigurationException with the specified error message.
+     * 
+     * @param	s	error message
+     * */
     public JEQNQueueOverflowException(final String s) {
         super(s);
     }
     
+    /**
+     * Creates a new JEQNQueueOverflowException raised by the user that has caused the error
+     * 
+     * @param	s	error message
+     * */
     public JEQNQueueOverflowException(final User u) {
         user = u;
     }

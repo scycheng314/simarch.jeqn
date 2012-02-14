@@ -24,21 +24,33 @@ package it.uniroma2.sel.simlab.jeqn.exceptions;
 
 import it.uniroma2.sel.simlab.simarch.exceptions.layer3.Layer3Exception;
 
-/**
- *
- * @author Daniele Gianni
- */
+/** 
+ * Indicates that a general issue at layer 3 has been detected
+*
+* @author Daniele Gianni
+*/
 public class JEQNException extends Layer3Exception {
     
-    /** Creates a new instance of JEQNException */
+    /** Creates a new JEQNException with {@code null} as its detail message */
     public JEQNException() {
         super();
     }
     
+    /**
+     * Create a new JEQNException wrapping an existing exception.
+     * The existing exception will be embedded in the new one, and its message will become the default message.
+     * 
+     * @param	e	The exception to be wrapped in a JEQNQueueOverflowException
+     * */
     public JEQNException(final Exception e) {
         super(e);
     }
     
+    /**
+     * Creates a new JEQNError with the specified  detail message
+     * 
+     * @param	s	error message
+     * */
     public JEQNException(final String s) {
         super(s);
     }

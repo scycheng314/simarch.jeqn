@@ -26,14 +26,16 @@ import it.uniroma2.sel.simlab.jeqn.policies.MapImplicitAndExplicitInputDependent
 
 import java.util.Map;
 
-/** Defines a user category based routing policy, ie in which the output port depends on (and only) on the
- * user category. Specifically, this class is defined as specialization of a mapping policy
+/** Defines a numeric-based routing policy, according to which the output port depends on an integer parameter. Specifically, this class is defined as specialization of a mapping policy
  *
  * @author Daniele Gianni
  */
 public class IntegerMappingPolicy extends MapImplicitAndExplicitInputDependentPolicy<Integer, Integer>{
     
-    /** Creates a new instance of CategoryBasedRoutingPolicy */
+    /**
+     * Creates a new IntegerMappingPolicy with the specified mapping between integer parameters and output port indexes.
+     * @param m {@code Map} object that associate an {@code Integer} object, which wraps the output port index, to an {@code Integer} object which represents the policy parameter.
+     */
     public IntegerMappingPolicy(final Map<Integer, Integer> m) {
         super(m);
     }    

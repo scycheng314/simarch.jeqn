@@ -24,8 +24,7 @@ package it.uniroma2.sel.simlab.jeqn.exceptions;
 
 import it.uniroma2.sel.simlab.simarch.data.Event;
 
-/** Indicates that an unexpected type of event has been received by a jEQN simulation
- * component.
+/** Indicates that a jEQN simulation entity has received an unexpected event.
  *
  * @author Daniele Gianni
  */
@@ -34,19 +33,34 @@ public class JEQNUnexpectedEventReceivedException extends JEQNException {
     protected Event event;
     
     /**
-     * Creates a new instance of JEQNUnexpectedEventReceivedException
+     * Creates a new JEQNUnexpectedEventReceivedException with {@code null} as its detail message
      */
     public JEQNUnexpectedEventReceivedException() {
     }
     
+    /**
+     * Creates a new of JEQNException raised by an unexpected event.
+     * 
+     * @param	e	Unexpected event that causes the exception
+     * */
     public JEQNUnexpectedEventReceivedException(final Event e) {
         event = e;
     }
     
+    /**
+     * Return a short description of the occurred exception.
+     * 
+     * @return	error description
+     * */
     public String getMessage() {
         return toString();        
     }
     
+    /**
+     * Generates a short description of the occurred exception.
+     * 
+     * @return	error description
+     * */
     public String toString() {
         String msg = "JEQNUnexpectedEventReceived : \n" +
                      "Event sender      : " + event.getSenderName() + "\n" +

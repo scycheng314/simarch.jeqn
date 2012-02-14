@@ -28,14 +28,27 @@ package it.uniroma2.sel.simlab.jeqn.exceptions;
  */
 public class JEQNConfigurationException extends JEQNException {
     
-    /** Creates a new instance of JEQNConfigurationException */
+    /** 
+     * Creates a new  JEQNConfigurationException with {@code null} as its detail message
+     *  */
     public JEQNConfigurationException() {
     }
     
+    /**
+     * Create a new JEQNConfigurationException wrapping an existing exception.
+     * The existing exception will be embedded in the new one, and its message will become the default message.
+     * 
+     * @param	e	The exception to be wrapped in a JEQNQueueOverflowException
+     * */
     public JEQNConfigurationException(final Exception e) {
         super(e);
     }
     
+    /**
+     * Creates a new JEQNConfigurationException with the specified error message
+     * 
+     * @param	s	error message
+     * */
     public JEQNConfigurationException(final String s) {
         super(s);
     }    

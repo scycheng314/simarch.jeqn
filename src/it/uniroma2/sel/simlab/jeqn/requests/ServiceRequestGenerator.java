@@ -24,25 +24,28 @@ package it.uniroma2.sel.simlab.jeqn.requests;
 
 import it.uniroma2.sel.simlab.jeqn.users.User;
         
-/** Defines the interface of generators of service requests
+/** Defines the abstract class which specifies the interface of the service requests generator
  *
  * @author  Daniele Gianni
  */
 public abstract class ServiceRequestGenerator {
- 
+	
+	/**
+	 * Creates a new ServiceRequestGenerator
+	 */
     public ServiceRequestGenerator() {
     }
 
     /**
-     * Retrieves the service request for User u
-     * @param u
-     * @return
+     * Gets the next service request for the specified user.
+     * @param u	user for which the service request is to be retrieved.
+     * @return	@{ServiceRequest} object that wraps the service request.
      */
     public abstract ServiceRequest getNext(final User u);
 
     /**
      * Assignes the internally generated request to User u
-     * @param u
+     * @param u user for which the service request is to be assigned
      */
     public void assignResourceRequest(User u) {
         u.setServiceRequest(getNext(u));

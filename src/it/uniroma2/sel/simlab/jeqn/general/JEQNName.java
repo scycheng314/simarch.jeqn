@@ -25,8 +25,8 @@ package it.uniroma2.sel.simlab.jeqn.general;
 import it.uniroma2.sel.simlab.simarch.data.Name;
 import it.uniroma2.sel.simlab.simarch.exceptions.InvalidNameException;
 
-/** Defines the format of names in jEQN. Names can be used to identify entities
- * (local and remote) and ports
+/** 
+ * Creates names used in the jEQN model. Names can be used to identify local and remote entities and ports.
  *
  * @author Daniele Gianni
  */
@@ -35,17 +35,34 @@ public class JEQNName extends Name {
     // string separator in jEQN names
     public static final String TOKEN = ".";
     
-    /** Creates a new instance of JEQNName */
+    /** 
+     * Creates a new JEQNName with the specified name
+     *
+     * @param	s	name to be wrapped in a JEQNName object.
+     * @throws	InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     * */
     public JEQNName(final String s) throws InvalidNameException {
         super(s);
     }
     
+    /** 
+     * Sets the name of this object to be equal to the argument name.
+     *
+     * @param	s	the new name to be wrapped in a JEQNName object.
+     * @throws	InvalidNameException	An InvalidNameException is raised if the name format is not allowed. This version throws an exception only if the name parameter contains a '.' character.
+     * */
     public void setValue(final String s) throws InvalidNameException {
         
         if (s.contains(TOKEN)) throw new InvalidNameException("TOKEN " + TOKEN + " is not allowed in jEQN Names");
         
         value = s;
     }    
+    
+    /**
+     * Returns a string constituted by the wrapped name.
+     * 
+     * @return the name wrapped by the JEQNName object.
+     */
     
     public String toString() {
         return value;
