@@ -20,6 +20,7 @@
  *
  */
 
+
 package it.uniroma2.sel.simlab.jeqn.errors;
 
 /** Defines the jEQN error concerning the system configuration
@@ -29,15 +30,25 @@ package it.uniroma2.sel.simlab.jeqn.errors;
 public class JEQNConfigurationError extends JEQNError {
     
     /**
-     * Creates a new instance of JEQNConfigurationError
+     * Creates a new JEQNConfigurationError.
      */
     public JEQNConfigurationError() {
     }
     
+    /**
+     * Creates a new JEQNConfigurationError wrapping an existing throwable object.
+     * 
+     * @param	t	Throwable object to be wrapped
+     * */
     public JEQNConfigurationError(final Throwable t) {
         super(t);
     }
    
+    /**
+     * Constructs an Error with the specified specified detail message
+     * 
+     * @param	s	error message
+     * */
     public JEQNConfigurationError(final String s) {
         super(s);
     }
