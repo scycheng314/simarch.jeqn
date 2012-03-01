@@ -60,7 +60,14 @@ public abstract class SpecialNode extends JEQNElement {
      */
     protected Time userForwardDelay;
     
-    /** Creates a new instance of SpecialNode */
+    /**
+     * Creates a new instance of SpecialNode
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public SpecialNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay) throws InvalidNameException {
         super(name, timeFactory, layer2factory);
         
@@ -74,26 +81,50 @@ public abstract class SpecialNode extends JEQNElement {
         setOutPort(new OutPort(new JEQNName(USER_OUT_PORT_NAME), this));
     }
     
+    /**
+     * Gets the component input port. It is used to connect this component to the previous entity
+     * @return Input port.
+     */
     public InPort getInPort() {
         return inPort;
     }
     
+    /**
+     * Gets the component output port. It is used to connect this component to the next component.
+     * @return Output port.
+     */
     public OutPort getOutPort() {
         return outPort;
     }
     
+    /**
+     * Gets the delay introduced to send a processed users to the next entity.
+     * @return Delay time introduced to send users to the output port.
+     */
     public Time getUserForwardDelay() {
         return userForwardDelay;
     }
     
+    /**
+     * Sets the component input port.
+     * @param p Input port.
+     */
     public void setInPort(final InPort p) {
         inPort = p;
     }
     
+    /**
+     * Sets the component output port
+     * @param p Output port.
+     */
     public void setOutPort(final OutPort p) {
         outPort = p;
     }
     
+    /**
+     * Sets the delay introduced to send a processed users to the next entity.
+     * @param t	Delay time introduced to send users to the output port.
+     */
     public void setUserForwardDelay(Time t) {
         userForwardDelay = t;
     }    

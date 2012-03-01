@@ -63,7 +63,16 @@ public class AllocateReleasePoolOfTokens extends PoolOfTokens {
      */
     protected Map<Token, User> tokenAssignation;       
     
-    /** Creates a new instance of AllocateReleasePoolOfTokens */
+    /** 
+     * Creates a new instance of AllocateReleasePoolOfTokens
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param tokenFactory Factory that generate the tokens
+     * @param tokenAllocateEventAckDelay The delay time introduced to send a token. It constitutes the response to the token request submitted by the Allocate node.
+     * @param tokenReleaseEventAckDelay The delay time introduced to get back a token. It constitutes the response to the token release request submitted by the Release node.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public AllocateReleasePoolOfTokens(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final TokenFactory tokenFactory, final double tokenAllocateEventAckDelay, final double tokenReleaseEventAckDelay) throws InvalidNameException {            
         super(name, timeFactory, tokenFactory, layer2factory);
         

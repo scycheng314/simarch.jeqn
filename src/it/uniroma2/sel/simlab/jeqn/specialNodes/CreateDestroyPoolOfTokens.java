@@ -49,7 +49,17 @@ public class CreateDestroyPoolOfTokens extends PoolOfTokens {
      */
     protected Map<Token, User> tokenAssignation;           
     
-    /** Creates a new instance of AllocateReleasePoolOfTokens */
+    /** 
+     * Creates a new AllocateReleasePoolOfTokens
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param tokenFactory Factory that generate the tokens
+     * @param tokenCreateEventAckDelay The delay time introduced to create a token
+     * @param tokenDestroyEventAckDelay The delay time introduced to destroy a token
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public CreateDestroyPoolOfTokens(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final TokenFactory tokenFactory, final double tokenCreateEventAckDelay, final double tokenDestroyEventAckDelay) throws InvalidNameException {            
         super(name, timeFactory, tokenFactory, layer2factory);        
         

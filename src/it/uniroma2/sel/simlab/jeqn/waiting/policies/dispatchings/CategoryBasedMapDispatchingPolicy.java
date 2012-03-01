@@ -34,7 +34,11 @@ import it.uniroma2.sel.simlab.jrand.objectStreams.streamTrasformations.MappedStr
  */
 public class CategoryBasedMapDispatchingPolicy extends MapImplicitAndExplicitInputDependentPolicy<Category, UserQueue> {
    
-    /** Creates a new instance of GeneralQueuesAssigner */
+    /** 
+     * Creates a new instance of GeneralQueuesAssigner
+     * @param s {@code MappedStream} object that specifies how the several user categories are mapped to the available queue structures.
+     * @see it.uniroma2.sel.simlab.jeqn.waiting.storages.UserQueue
+     */
     public CategoryBasedMapDispatchingPolicy(final MappedStream<UserQueue> s) {
         super();
     }

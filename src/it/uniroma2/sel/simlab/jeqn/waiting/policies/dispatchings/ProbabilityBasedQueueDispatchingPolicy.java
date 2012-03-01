@@ -33,7 +33,10 @@ import it.uniroma2.sel.simlab.jrand.objectStreams.streamTrasformations.Probabili
  */
 public class ProbabilityBasedQueueDispatchingPolicy extends ObjectSequencePolicy<UserQueue> {
    
-    /** Creates a new instance of ProbabilityBasedQueueAssigmentPolicy */
+    /** 
+     * Creates a new instance of ProbabilityBasedQueueAssigmentPolicy
+     * @param s Probability stream that specifies the dispatching probability of users to queues
+     */
     public ProbabilityBasedQueueDispatchingPolicy(final ProbabilityBasedStream<UserQueue> s) {
         super(s);
     }

@@ -201,7 +201,7 @@ public abstract class WaitingSystem extends JEQNElement {
     }
     
     /**
-     * 
+     * Contains the simulation logic of the element.
      * @throws it.uniroma2.info.sel.simlab.jeqn.exceptions.JEQNException If an exception occurs within this method
      */
     public void body() throws JEQNException {

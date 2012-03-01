@@ -122,7 +122,13 @@ public class PoolOfTokens extends JEQNElement {
      */
     protected double lastReqTime[];
     
-    /** Creates a new instance of PoolOfTokens */
+    /** Creates a new instance of PoolOfTokens
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param tokenFactory Factory that generate the tokens
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     protected PoolOfTokens(final JEQNName name, final JEQNTimeFactory timeFactory, final TokenFactory tokenFactory, final Layer3ToLayer2Factory layer2factory) throws InvalidNameException {            
         super(name, timeFactory, layer2factory);
           
@@ -215,71 +221,139 @@ public class PoolOfTokens extends JEQNElement {
         System.out.println("Token release request mean interarrival time    : " + interarrivalTime[3].meanValue());
         System.out.println("Number of token release request                 : " + interarrivalTime[3].sampleSize());
     }
-
+    
+    /**
+     * Gets the delay time introduced in the acknowledgment of a token allocate request
+     * @return acknowledgment delay for a token allocate request.
+     */
     public Time getTokenAllocateEventAckDelay() {
         return tokenAllocateEventAckDelay;
     }
-
+    
+    /**
+     * Sets the delay time introduced in the acknowledgment of a token allocate request
+     * @param t acknowledgment delay for a token allocate request.
+     */
     public void setTokenAllocateEventAckDelay(final Time t) {
         tokenAllocateEventAckDelay = t;
     }
-
+    
+    /**
+     * Gets the delay time introduced in the acknowledgment of a token release request
+     * @return Acknowledgment delay for a token release request.
+     */
     public Time getTokenReleaseEventAckDelay() {
         return tokenReleaseEventAckDelay;
     }
-
+    
+    /**
+     * Sets the delay time introduced in the acknowledgment of a token release request
+     * @param t Acknowledgment delay for a token release request.
+     */
     public void setTokenReleaseEventAckDelay(final Time t) {
         tokenReleaseEventAckDelay = t;
     }
-
+    
+    /**
+     * Gets the delay time introduced in the acknowledgment of a token create request
+     * @return Acknowledgment delay for a token creation request.
+     */
     public Time getTokenCreateEventAckDelay() {
         return tokenCreateEventAckDelay;
     }
-
+    
+    /**
+     * Sets the delay time introduced in the acknowledgment of a token create request
+     * @param t Acknowledgment delay for a token creation request.
+     */
     public void setTokenCreateEventAckDelay(final Time t) {
         tokenCreateEventAckDelay = t;
     }
 
+    /**
+     * Gets the delay time introduced in the acknowledgment of a token destroy request
+     * @return Acknowledgment delay for a token destroy request.
+     */
     public Time getTokenDestroyEventAckDelay() {
         return tokenDestroyEventAckDelay;
     }
 
+    /**
+     * Sets the delay time introduced in the acknowledgment of a token destroy request
+     * @param t Acknowledgment delay for a token destroy request.
+     */
     public void setTokenDestroyEventAckDelay(final Time t) {
         tokenDestroyEventAckDelay = t;
     }
     
+    /**
+     * Sets the token factory
+     * @param f Token factory
+     */
     private void setTokenFactory(final TokenFactory f) {
         tokenFactory = f;
     }
 
+    /**
+     * Gets the port to receive the token allocation request
+     * @return Port to receive the token allocation request
+     */
     public InPort getInTokenRequestPort() {
         return inTokenRequestPort;
     }
 
+    /**
+     * Sets the port to receive the token allocation request
+     * @param p Port to receive the token allocation request
+     */
     public void setInTokenRequestPort(final InPort p) {
         inTokenRequestPort = p;
     }
 
+    /**
+     * Gets the port to receive the token release request
+     * @return Port to receive the token release request
+     */
     public InPort getInTokenReleasePort() {
         return inTokenReleasePort;
     }
-
+    
+    /**
+     * Sets the port to receive the token release request
+     * @param p Port to receive the token release request
+     */
     public void setInTokenReleasePort(final InPort p) {
         inTokenReleasePort = p;
     }
 
+    /**
+     * Gets the port used to send the acknowledgments to token allocate requests
+     * @return port to send the acknowledgments to token allocate requests
+     */
     public OutPort getOutTokenRequestPort() {
         return outTokenRequestPort;
     }
-
+    
+    /**
+     * Sets the port used to send the acknowledgments to token allocate requests
+     * @param p port to send the acknowledgments to token allocate requests
+     */
     public void setOutTokenRequestPort(final OutPort p) {
         outTokenRequestPort = p;
     }
 
+    /**
+     * Gets the port used for sending the acknowledgments to token dismiss requests
+     * @return Port for sending the acknowledgments to token dismiss requests
+     */
     public OutPort getOutTokenReleasePort() {
         return outTokenReleasePort;
     }
 
+    /**
+     * Sets the port for sending the acknowledgments to token dismiss requests
+     * @param p Port for sending the acknowledgments to token dismiss requests
+     */
     public void setOutTokenReleasePort(final OutPort p) {
         outTokenReleasePort = p;
     }

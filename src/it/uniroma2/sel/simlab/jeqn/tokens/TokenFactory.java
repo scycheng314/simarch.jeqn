@@ -24,24 +24,28 @@ package it.uniroma2.sel.simlab.jeqn.tokens;
 
 import it.uniroma2.sel.simlab.jeqn.general.JEQNName;
 
-/** Defines the general skelethon for factory objects
+/** Defines the general skeleton for a factory objects used to create tokens
  *
  * @author Daniele Gianni
  */
 public interface TokenFactory {
 
-    /*
-     * returns a token
-     */
-    public Token build();
+	/**
+	 * Creates a token
+	 */
+	public Token build();
 
-    /*
-     * returns a token and associate the token to the specified resource
+    
+    /**
+     * Creates a token associated to the specified resource
+     * @param resourceName name of the resource associated to the token
      */
-    public Token build(final JEQNName resourceName);
+	public Token build(final JEQNName resourceName);
 
-    /* indicates whether the factory can still produce tokens
-     *
+    /**
+     * Returns a boolean value that indicates whether the factory can still produce tokens 
+     * @return boolean value
      */
+     
     public boolean stillHasAToken();
 }

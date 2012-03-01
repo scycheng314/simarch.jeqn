@@ -28,14 +28,24 @@ import it.uniroma2.sel.simlab.jeqn.general.JEQNTimeFactory;
 import it.uniroma2.sel.simlab.simarch.exceptions.InvalidNameException;
 import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 
-/** Implements the Release Node simulation entity, ie the entity that returns the tokens to a specified
+/** 
+ * Implements the EQN Release Node, that is the entity that returns the tokens to a specified
  * Pool of Tokens when users leave the passive queue zone
  *
  * @author Daniele Gianni
  */
 public class ReleaseNode extends PassiveQueueOutNode {
         
-    /** Creates a new instance of DestroyNode */    
+    /**
+     * Creates a new instance of DestroyNode 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @param tokenDismissDelay The delay time introduced to dismiss a token
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
+    
     public ReleaseNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay, final double tokenDismissDelay) throws InvalidNameException {
         super(name, timeFactory, layer2factory, userForwardDelay,tokenDismissDelay); 
     }

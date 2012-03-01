@@ -41,7 +41,7 @@ import it.uniroma2.sel.simlab.simarch.exceptions.layer2.UnlinkedPortException;
 import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Defines Infinite Server simulation entity
+/** Implements the simulation logic of a EQN Infinite Server
  *
  * @author Daniele Gianni
  */
@@ -60,7 +60,16 @@ public class InfiniteServer extends ServiceCenter {
     // number of users received by this center
     private int usersReceived;
     
-    /** Creates a new instance of InfiniteServer */
+    /**
+     * Creates a new InfiniteServer in the EQN network
+     * 
+     * @param name	Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.	
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param generator	GEneratoro of service requests
+     * @param sendingAheadDelay
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public InfiniteServer(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final ServiceRequestGenerator generator, final Time sendingAheadDelay) throws InvalidNameException {        
         super(name, timeFactory, factory, sendingAheadDelay, timeFactory.makeFrom(0.0));      
         setServiceRequestGenerator(generator);
@@ -71,6 +80,9 @@ public class InfiniteServer extends ServiceCenter {
         interarrivalTime = new DiscretePopulationMean();
     }
     
+    /**
+     * Contains the simulation logic of the element.
+     */
     public void body() throws JEQNException {        
         Event event;
         
@@ -141,7 +153,10 @@ public class InfiniteServer extends ServiceCenter {
     public ServiceRequestGenerator getServiceRequestGenerator() {
         return serviceRequestGenerator;
     }
-
+    
+    /**
+     * Prints the statistics data gathered by the component during the simulation.
+     */
     public void printStatistics() {        
 
     	if (STATS) {
@@ -159,6 +174,11 @@ public class InfiniteServer extends ServiceCenter {
     	}
     }
     
+    /**
+     * Sets the service request generator
+     * @param g Service request generator
+     */
+     
     public void setServiceRequestGenerator(final ServiceRequestGenerator g) {
         serviceRequestGenerator = g;
     }

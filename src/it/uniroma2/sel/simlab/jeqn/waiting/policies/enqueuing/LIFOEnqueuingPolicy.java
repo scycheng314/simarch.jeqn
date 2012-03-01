@@ -27,7 +27,7 @@ import it.uniroma2.sel.simlab.jeqn.users.User;
 
 import java.util.List;
 
-/** Implements the enqueueing policy Last In First Out policy (LIFO)
+/** Implements the enqueueing policy Last In First Out (LIFO)
  *
  * @author Daniele Gianni
  */
@@ -35,7 +35,7 @@ public class LIFOEnqueuingPolicy extends ImplicitButNotExplicitInputOnlyDependen
     
     /**
      * Creates a new instance of LIFOInsertionPolicy
-     * @param implicitInput 
+     * @param implicitInput The list of user
      */
     public LIFOEnqueuingPolicy(final List<User> implicitInput) {
         super(implicitInput);

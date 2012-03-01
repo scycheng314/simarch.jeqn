@@ -43,22 +43,38 @@ public final class CountingUser extends User {
     // the user being wrapped in the CountingUser class
     private User wrapped;
     
-    /** Creates a new instance of UserWithCounter */
+    /** 
+     * Creates a new instance of UserWithCounter wrapping an existing user
+     * @param toWrap User to be wrapped
+     */
     public CountingUser(final User toWrap) {
         super(toWrap);
         setWrapped(toWrap);
         setCounter(0);        
     }   
     
+    /**
+     * Static method that returns a {@code CountingUser} wrapping an existing user.
+     * @param toWrap the user to be wrapped.
+     * @return A new istance of UserWithCounter
+     */
     public static CountingUser wrap(final User toWrap) {        
         return new CountingUser(toWrap);
     }
     
+    /**
+     * Increments the internal counter and returns the updated value
+     * @return The value of the internal counter. 
+     */
     public int count() {
         counter++;        
         return getCounter();
     }
     
+    /**
+     * Gets the internal counter value.
+     * @return Counter value.
+     */
     public int getCounter() {
         return counter;
     }
@@ -67,18 +83,34 @@ public final class CountingUser extends User {
         return COUNT_PREFIX + wrapped.getName();
     }
     
+    /**
+     * Gets the user wrapped into this UserWithCounter.
+     * @return the wrapped user.
+     */
     public User getWrapped() {
         return wrapped;
     }
         
+    /**
+     * Sets the internal counter to the specified value.
+     * @param i value used to update the internal counter.
+     */
     private void setCounter(final int i) {
         counter = i;
     }    
     
+    /**
+     * Sets the {@code User} object wrapped into this UserWithCounter.
+     * @param u User to be wrapped.
+     */
     private void setWrapped(final User u) {
         wrapped = u;                
     }      
     
+    /**
+     * Unwraps and returns the user wrapped into this UserWithCounter. 
+     * @return The wrapped user.
+     */
     public User unWrap() {
         return getWrapped();
     }

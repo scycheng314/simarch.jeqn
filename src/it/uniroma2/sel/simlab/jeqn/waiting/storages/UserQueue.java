@@ -62,9 +62,10 @@ public interface UserQueue {
     
     /**
      * Says whether the queue is full or not. The semantic of this is defined into the 
-     * implementing classes {@see FiniteUserQueue},{@see InfiniteUserQueue}
-     * @return {@code true} if full
-     * {@code false} if not
+     * implementing classes.
+     * @return {@code true} if full or {@code false} if not.
+     * @see FiniteUserQueue
+     * @see InfiniteUserQueue
      */
     public boolean isFull();
     

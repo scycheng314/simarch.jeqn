@@ -27,7 +27,8 @@ import java.util.ArrayList;
 
 /** Wraps a user allowing it to carry some tokens.
  *
- * {@see PassiveQueues}
+ * @see it.uniroma2.sel.simlab.jeqn.specialNodes.PassiveQueueInNode
+ * @see it.uniroma2.sel.simlab.jeqn.specialNodes.PassiveQueueOutNode
  * @author Daniele Gianni
  */
 public final class UserWithTokens <T extends Token> extends User {

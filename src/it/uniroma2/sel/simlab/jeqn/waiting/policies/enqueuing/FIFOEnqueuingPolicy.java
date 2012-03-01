@@ -32,7 +32,10 @@ import java.util.List;
  */
 public class FIFOEnqueuingPolicy extends ImplicitButNotExplicitInputOnlyDependentPolicy<List<User>, Integer> {
         
-    /** Creates a new instance of FIFOInsertionPolicy */
+    /**
+     * Creates a new instance of FIFOInsertionPolicy
+     * @param implicitInput The list of user
+     */
     public FIFOEnqueuingPolicy(final List<User> implicitInput) {
         super(implicitInput);
     }

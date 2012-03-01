@@ -75,23 +75,23 @@ public class SCANSelectionPolicy extends StateOnlyDependentPolicy<Integer, UserQ
     }
     
     /**
-     * Accessor method for the property
-     * @return The multi queue systems
+     * Gets the internal multi-queue associated to this policy
+     * @return The multi-queue systems
      */
     public List<UserQueue> getUserMultiQueue() {
         return userMultiQueue;
     }
     
     /**
-     * Accessor method for the property
-     * @param q The multi queue system
+     * Sets the internal multi-queue associated to this policy
+     * @param q The multi-queue system
      */
     public void setUserMultiQueue(List<UserQueue> q) {
         userMultiQueue = q;
     }
 
     /**
-     * Accessor method for the property
+     * Gets the direction property used by this policy. Direction is implemented as an enumerator that assumes the values {@code UP} or {@code DOWN}
      * @return The current scanning direction
      */
     public Direction getDirection() {
@@ -99,7 +99,8 @@ public class SCANSelectionPolicy extends StateOnlyDependentPolicy<Integer, UserQ
     }
 
     /**
-     * Accessor method for the property
+     * Sets the direction property used by this policy. Direction is implemented as an enumerator that assumes the values {@code UP} or {@code DOWN}
+     * 
      * @param direction The new scanning direction
      */
     public void setDirection(Direction direction) {

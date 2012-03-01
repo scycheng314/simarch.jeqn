@@ -40,10 +40,19 @@ public class SCAN4 extends ObjectSequencePolicy<UserQueue> {
     public SCAN4() {
     }
     
+    /**
+     * Sets the internal multi-queue
+     * @param umq multi-queue structure
+     */
     public void setQ(final UserMultiQueue umq) {
         q = umq;
     }
     
+    /**
+     * Gets the policy decision
+     * 
+	 * @return Returns one of the queue contained in the internal multi-queue structure according to a round-robin policy (SCAN among the queues).
+     */
     public UserQueue getDecision() {
         currentQueue++;
         return q.getUserQueue(currentQueue % 4);

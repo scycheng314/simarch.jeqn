@@ -36,7 +36,11 @@ public class TimeBasedTerminationPolicy extends ImplicitButNotExplicitInputAndSt
     public TimeBasedTerminationPolicy(Time stopTime, Layer3ToLayer2 layer3ToLayer2) {
         super(stopTime, layer3ToLayer2);
     }
-
+    
+    /**
+     * Returns the decision of this policy. 
+     * @return The {@code Boolean} object that indicates whether or not the user generation has to be terminated.
+     */
     public Boolean getDecision() {
         return state.getClock().isGreaterOrEqualThan(implicitInput);
     }        

@@ -39,8 +39,7 @@ import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 import it.uniroma2.sel.simlab.simcomp.basic.ports.OutPort;
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Implements a Service Center that allows interruption of the processing of a user upon the reception
- * of a higher priority user
+/** Implements an EQN Service Center that allows to interrupt the processing of a user as an higher priority user incomes.
  *
  * @author Daniele Gianni
  */
@@ -79,7 +78,20 @@ public class PreEmptiveServiceCenter extends ServiceCenter {
      */
     protected DiscretePopulationMean reenqueueings;
     
-    /** Creates a new instance of PreEmptiveServiceCenter */
+    /** 
+     * 
+     *
+     * Creates a new PreEmptiveServiceCenter with the specified delays
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code Time} object that contains the delay introduced when sending a processed users to the next entity.
+     * @param requestDelay	{@code Time} object that contains the delay introduced when sending a partially processed user back to the previous entity. 
+     * @param sendingBackDelay {@code Time} object that contains the delay introduced to re-enqueuing an interrupted user.
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     *
+     */
     public PreEmptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final Time requestDelay, final Time sendingAheadDelay, final Time sendingBackDelay) throws InvalidNameException {        
         super(name, timeFactory, factory, sendingAheadDelay, requestDelay);
         
@@ -197,7 +209,7 @@ public class PreEmptiveServiceCenter extends ServiceCenter {
     }
 
     /*
-     * this method is currently empty and left only for consistency with interface defined by the mother class
+     * this method is currently empty and left only for consistency with interface defined by the superclass
      */
     protected void process(final User u) {
         /*

@@ -22,7 +22,7 @@
 
 package it.uniroma2.sel.simlab.jeqn.users;
 
-/** Defines the class representing user categories (aka class in EQN jargon)
+/** Implements Category, that represents a class of users within EQN network.
  *
  * @author  Daniele Gianni
  */
@@ -33,23 +33,46 @@ public class Category implements Comparable<Category> {
     
     // other info needed to characterize the category
     
-    /** Creates a new instance of Category */
+    /** 
+     * Creates a new Category
+     * 
+     * @param s The category name.
+     */
+     
     public Category(final String s) {       
         setName(s);
     }
     
+    /**
+     * Gets the category name
+     * @return The user category name
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     * Sets the category name
+     * @param s The user category name
+     */
     public void setName(final String s) {
         name = s;
     }
     
+    /**
+     * Return a string that contains the category name
+     * @return A string that contains the category name
+     */
     public String toString() {
         return "cat: " + name;
     }    
 
+    /**
+     * Compares this category to the one specified as parameter by comparing the category names
+     * @return the value {code 0} if the argument category is equal to this category; 
+     * a value less than {@code 0} if this category is lexicographically less than the category argument; 
+     * and a value greater than {@code 0} othewise.
+     */
     public int compareTo(final Category c) {
         return name.compareTo(c.getName());
     }

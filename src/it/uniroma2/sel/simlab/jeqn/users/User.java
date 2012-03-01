@@ -27,7 +27,7 @@ import it.uniroma2.sel.simlab.simarch.data.Time;
 
 import it.uniroma2.sel.simlab.jeqn.requests.ServiceRequest;
 
-/** The basic user in jEQN simulators
+/** Implements the basic user in jEQN simulator
  *
  * @author  Daniele Gianni
  */
@@ -53,7 +53,9 @@ public class User implements Comparable<User> {
     // time request for the next service center
     private ServiceRequest serviceRequest;
     
-    /** Creates a new instance of User */
+    /** 
+     * Creates a new instance of User
+     */
     public User() {
         setName(UNKNOWN_USER);
         setBornTime(JEQNTimeFactory.makeFrom(Time.ZERO));
@@ -61,8 +63,10 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Creates a new instance of User
-     * @param u The user which it can copy all data
+     * Creates a new instance of User. 
+     * User attributes {@code name}, {@code bornTime} and {@code category} are valued according to the attributes of the 
+     * specified User passed as parameter.   
+     * @param u The user used to determine the attributes value of the new user. 
      */
     public User(final User u) {
         setName(u.getName());
@@ -72,7 +76,7 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Creates a new instance of User
+     * Creates a new instance of User with the specified name.
      * @param s The user name
      */
     public User(final String s) {
@@ -82,7 +86,7 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Creates a new instance of User
+     * Creates a new instance of User with the specified name and category.
      * @param s The user name
      * @param c The category
      */
@@ -94,7 +98,7 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Says whether is carrying token
+     * Check whether or not this user is carrying tokens
      * @return {@code false} always for this basic user
      */
     public boolean carriesTokens() {
@@ -102,14 +106,15 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * 
+     * Compare this user with the specified user.
+     * @param u User to be compared with this user.
      */
     public int compareTo(final User u) { //, final Comparable<? extends User> u2) {
         return name.compareTo(u.getName());
     }
     
-    /** Getter for property category.
-     * @return Value of property category.
+    /** Gets the user category.
+     * @return User category.
      *
      */
     public Category getCategory() {
@@ -117,15 +122,15 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Setter for property category.
-     * @param c the new category
+     * Sets the user category.
+     * @param c the new user category
      */
     public void setCategory(final Category c) {
         category = c;
     }    
     
-    /** Getter for property name.
-     * @return Value of property name.
+    /** Gets the user name.
+     * @return User name.
      *
      */
     public String getName() {
@@ -133,15 +138,15 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Setter for property name.
-     * @param s The new name
+     * Sets the user name.
+     * @param s The new user name
      */
     public void setName(final String s) {
         name = s;
     }
         
-    /** Getter for property request.
-     * @return Value of property request.
+    /** Gets the time request for the next service center.
+     * @return Service request value.
      *
      */
     public ServiceRequest getServiceRequest() {
@@ -149,19 +154,24 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Setter for property request.
+     * Sets the time request for the next service center.
      * @param sr The new service request
      */
     public void setServiceRequest(final ServiceRequest sr) {
         serviceRequest = sr;
     }    
     
+    /**
+     * Returns a string constituted by the user properties value.
+     * 
+     * @return the concatenation of user properties value.
+     */
     public String toString() {
         return getName() + " " + getCategory() + " " + getServiceRequest() + " Born time : " + getBornTime().getValue() +"#";
     }
     
-    /** Getter for property bornTime.
-     * @return Value of property bornTime.
+    /** Gets the user born time.
+     * @return The user born time.
      *
      */
     public Time getBornTime() {
@@ -169,26 +179,26 @@ public class User implements Comparable<User> {
     }
     
     /**
-     * Setter for property bornTime.
-     * @param t The born time
+     * Set the value for the user born time.
+     * @param t user born time.
      */
     public void setBornTime(final Time t) {
         bornTime = t;
     }
     
     /**
-     * Getter for property inComingTime.
+     * Gets the user incoming time value.
      * 
-     * @return Value of property inComingTime.
+     * @return The user arrival time at the current EQN entity
      */
     public double getInComingTime() {
         return inComingTime;
     }
     
     /**
-     * Setter for property inComingTime.
+     * Sets the user incoming time value.
      * 
-     * @param d The new time
+     * @param d The new user arrival time at the current EQN entity
      */
     public void setInComingTime(final double d) {
         inComingTime = d;

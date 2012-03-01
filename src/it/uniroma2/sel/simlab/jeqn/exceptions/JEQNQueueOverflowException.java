@@ -60,7 +60,7 @@ public class JEQNQueueOverflowException extends JEQNWaitingException {
     /**
      * Creates a new JEQNQueueOverflowException raised by the user that has caused the error
      * 
-     * @param	s	error message
+     * @param	u	User that has caused the error
      * */
     public JEQNQueueOverflowException(final User u) {
         user = u;

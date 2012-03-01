@@ -67,7 +67,7 @@ public final class SingleCatUserGenerator implements UserGenerator {
     }
     
     /** Setter for property category.
-     * @param category New value of property category.
+     * @param c New value of property category.
      *
      */
     public void setCategory(Category c) {
@@ -83,7 +83,7 @@ public final class SingleCatUserGenerator implements UserGenerator {
     }
     
     /** Setter for property prefixName.
-     * @param prefixName New value of property prefixName.
+     * @param s New value of property prefixName.
      */
     public void setPrefixName(String s) {
         prefixName = s;

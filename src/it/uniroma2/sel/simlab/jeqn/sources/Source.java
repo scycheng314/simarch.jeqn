@@ -46,9 +46,10 @@ import it.uniroma2.sel.simlab.simcomp.basic.ports.OutPort;
 
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Modellazione di una sorgente di utenti: parametrizzata su
- * 1. tempo di interarrivo tra due utenti
- * 2. classe di utenti da generare
+/** 
+ * Implements an EQN Source element. It can be parameterize according to the 2 followin parameters:
+ * 1. interarrival time
+ * 2. jobclass of users that will be generated.
  *
  * @author Daniele Gianni
  */
@@ -89,13 +90,17 @@ public class Source extends JEQNElement {
     protected DiscretePopulationMean interarrivalMean;    
     //private DiscretePopulationVariance interarrivalVariance;    
     
-    /** Crea una nuova istanza di questa classe
-     * @param name Nome dell'entita' sorgente
-     * @param up Caratteristiche della classe di utenti da generare
-     * @param waitingUserSystem Porta destinazione degli <CODE>User</CODE> generati
-     * @param interArrivalTime Distribuzione di interarrivo
-     * @see
-     */        
+    
+    
+    /** Creates a new Source
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param ug	User generator
+     * @param n		Numeric stream that implements the interarrival time.
+     * @param terminationPolicy		policy that specifies the condition under which the user generation terminates.
+     */    
     public Source(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final UserGenerator ug, final NumericStream n, final MaskImplicitPolicy<?, ?, Boolean> terminationPolicy ) throws InvalidNameException {                      
         super(name, timeFactory, layer2factory);
         
@@ -108,8 +113,9 @@ public class Source extends JEQNElement {
         //interarrivalVariance = new DiscretePopulationVariance();
     }
     
-    /** Source simulation logic
-     */    
+    /**
+     * Contains the simulation logic of the element.
+     */   
     public void body() throws JEQNException {                        
         Time nextUserBornTime;                               
         
@@ -139,10 +145,18 @@ public class Source extends JEQNElement {
         return outPort;
     }
      
+    /**
+     * Gets the interarrival time
+     * @return	A Numeric stream that implements the interarrival time.
+     */
     public NumericStream getInterarrivalTime() {
         return interarrivalTime;
     }
     
+    /**
+     * Sets the interarrival time
+     * @param r	A Numeric stream that implements the interarrival time.
+     */
     public void setInterarrivalTime(final NumericStream r) {
         interarrivalTime = r;
     }
@@ -151,7 +165,11 @@ public class Source extends JEQNElement {
     public void setOutPort(final OutPort p) {
         outPort = p;
     }
-      
+    
+    /**
+     * Sets the user generator
+     * @param ug	User generator
+     */
     public void setUsersGenerator(final UserGenerator ug) {
         usersGenerator = ug;
     }
@@ -159,6 +177,7 @@ public class Source extends JEQNElement {
     private void setTerminationPolicy(MaskImplicitPolicy<?, ?, Boolean> p) {
         terminationPolicy = p;
     }
+    
     
     public void printStatistics() {
 

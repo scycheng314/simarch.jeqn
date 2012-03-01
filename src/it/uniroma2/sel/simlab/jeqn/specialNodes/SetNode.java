@@ -38,7 +38,7 @@ import it.uniroma2.sel.simlab.simarch.exceptions.layer2.UnlinkedPortException;
 import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Sets a specified value into users passing through this node
+/** Implements the EQN Set node. This node sets a specified  attribute of the incoming user to a given value.
  *
  * @author Daniele Gianni
  */
@@ -54,7 +54,16 @@ public class SetNode<T> extends SpecialNode {
     // user interarrival time
     private DiscretePopulationMean meanInterarrivalTime;
     
-    /** Creates a new instance of SetNode */
+    /** 
+     * Creates a new instance of SetNode
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @param valueSequence Sequence of values to be used to set user attributes.
+     * @param fieldName Attribute name to be set.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public SetNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay, final ObjectStream<? extends T> valueSequence, final String fieldName) throws InvalidNameException {
         super(name, timeFactory, layer2factory, userForwardDelay);
         
@@ -64,6 +73,9 @@ public class SetNode<T> extends SpecialNode {
         meanInterarrivalTime = new DiscretePopulationMean();
     }
     
+    /**
+     * Contains the simulation logic of the element.
+     */ 
     public void body() throws JEQNException {
         
         Event event;
@@ -109,7 +121,10 @@ public class SetNode<T> extends SpecialNode {
             throw new JEQNError(ex);
         }
     }
-
+    
+    /**
+     * Prints the statistics data gathered by the component during the simulation.
+     */
     public void printStatistics() {
         System.out.println("### Set  Node " + getEntityName() + "\n");
         System.out.println("Mean Interarrival Time                   : " + meanInterarrivalTime.meanValue());                
@@ -118,10 +133,18 @@ public class SetNode<T> extends SpecialNode {
         System.out.println("\n\n");
     }
     
+    /**
+     * Sets the attribute name to be set
+     * @param s attribute name
+     */
     private void setFieldName(final String s) {
         fieldName = s;
     }
     
+    /**
+     * Sets the stream that contains the sequence of values to be used to set user attributes.
+     * @param s {@code ObjectStream} that contains the sequence of values.
+     */
     private void setObjectStream(final ObjectStream<? extends T> s) {
         objectStream = s;
     }        

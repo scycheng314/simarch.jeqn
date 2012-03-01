@@ -37,7 +37,10 @@ public class CloneUser_UserTracker extends CloneUser {
     // number of the copy
     private Integer copyNumber;
     
-    /** Creates a new instance of CloneUser */
+    /**
+     * Creates a new instance of CloneUser
+     * @param toClone User to be coned.
+     */
     public CloneUser_UserTracker(final TrackingPathUser toClone) {
         super(toClone);
         
@@ -45,6 +48,11 @@ public class CloneUser_UserTracker extends CloneUser {
         setCopyNumber(0);
     }
     
+    /**
+     * Creates a new instance of CloneUser
+     * @param toClone User to be coned.
+     * @param copyNumber the number of clones that have to be generated
+     */
     public CloneUser_UserTracker(final TrackingPathUser toClone, final Integer copyNumber) {
         super(toClone);
         
@@ -52,14 +60,32 @@ public class CloneUser_UserTracker extends CloneUser {
         setCopyNumber(copyNumber);
     }
     
+    /**
+     * Static method that returns an instance of CloneUser by wrapping the specified user.
+     * @param u The user to be cloned.
+     * @return The new instance of CloneUser.
+     */
     public static CloneUser_UserTracker wrap(final TrackingPathUser u) {
         return new CloneUser_UserTracker(u);
     }
     
+    /**
+     * Static method that returns an instance of CloneUser with the specified number of clones. It wraps the specified user.
+     * 
+     * @param u The TrackingPathUser to be cloned.
+     * @param i the number of clones that have to be generated
+     * @return The new instance of CloneUser.
+     */
     public static CloneUser_UserTracker wrap(final TrackingPathUser u, final Integer i) {
         return new CloneUser_UserTracker(u, i);
     }        
     
+    /**
+     * Static method that returns a list of cloned user, generated from an original user.
+     * @param toClone user to be cloned 
+     * @param numberOfClones the number of clones that have to be generated
+     * @return the list of clones
+     */
     public static ArrayList<CloneUser_UserTracker> clone(final TrackingPathUser toClone, final Integer numberOfClones) {
     
         ArrayList<CloneUser_UserTracker> clones = new ArrayList<CloneUser_UserTracker>(numberOfClones);
@@ -71,6 +97,9 @@ public class CloneUser_UserTracker extends CloneUser {
         return clones;        
     }
     
+    /**
+     * 
+     */
     public User getClone() {
         return cloned;
     }

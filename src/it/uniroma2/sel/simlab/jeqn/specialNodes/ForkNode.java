@@ -43,8 +43,18 @@ import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 
 import java.util.ArrayList;
 
-/** Implements the ForkNode, ie the node that generates a set of child users that are to be synchronized
- * at a specified Join node
+/** Implements the EQN ForkNode, that is the node that generates a set of child users that are to be synchronized
+ * at a specified {@code Join} node. A specified policy it is used to detemine the number of child users generate, but it should be noted that
+ * for each incoming user the following users are routed to the outport:
+ * - a {@code dadUser}, that wraps the incoming user
+ * - n {@code childUser}, where n accords to the policy decision.
+ * 
+ * Finally, it should be noted that the Fork node does not implement any routing policy: outgoing users are forwarded to the same output port. 
+ * If needed, a Router node must be placed as cascade entity. 
+ * 
+ * @see it.uniroma2.sel.simlab.jeqn.specialNodes.JoinNode
+ * @see it.uniroma2.sel.simlab.jeqn.users.DadUser
+ * @see it.uniroma2.sel.simlab.jeqn.users.SonUser
  *
  * @author Daniele Gianni
  */
@@ -71,7 +81,18 @@ public class ForkNode extends SpecialNode {
      */
     private Time interUserDelay;
     
-    /** Creates a new instance of ForkNode */
+    /** 
+     * Creates a new ForkNode
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @param forkPolicy policy Policy that determines how many child users have to be generated for each incoming user
+     * @param sonUserGenerator Generator of child users.
+     * @param interUserDelay The delay time introduced to forward outgoing users to the cascade entity
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public ForkNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay, final MaskBasePolicy<?, User, ?, Integer> forkPolicy /* final MaskBasePolicy<?, ?, DecisionData, Integer> forkPolicy, final DecisionDataFactory decisionDataFactory*/,  final SonUserGenerator sonUserGenerator, final Time interUserDelay) throws InvalidNameException {
         super(name, timeFactory, layer2factory, userForwardDelay);
         
@@ -89,6 +110,9 @@ public class ForkNode extends SpecialNode {
         setInterUserDelay(timeFactory.makeFrom(interUserDelay));
     }
     
+    /**
+     * Contains the simulation logic of the element.
+     */ 
     public void body() throws JEQNException {
      
         Event event;
@@ -134,11 +158,17 @@ public class ForkNode extends SpecialNode {
     private void setSonUserGenerator(final SonUserGenerator g) {
         sonUserGenerator = g;
     }
-
+    /**
+     * Gets the delay time introduced to forward outgoing users to the cascade entity
+     * @return The delay time of forwarded users.
+     */
     public Time getInterUserDelay() {
         return interUserDelay;
     }
-
+    /**
+     * Sets the delay time introduced to forward outgoing users to the cascade entity
+     * @param interUserDelay a {@code Time} object that wraps the specified delay
+     */
     public void setInterUserDelay(Time interUserDelay) {
         this.interUserDelay = interUserDelay;
     }

@@ -37,7 +37,7 @@ public class SameCatUserGenerator implements UserGenerator {
     public SameCatUserGenerator(final User u) {
         setCategory(u.getCategory());
     }
-
+    
     public User getNextUser() {
         return new User("User_of_category_" + category.getName(), category);
     }

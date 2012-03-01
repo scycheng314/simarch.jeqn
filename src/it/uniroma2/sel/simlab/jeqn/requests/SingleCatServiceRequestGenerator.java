@@ -28,7 +28,7 @@ import it.uniroma2.sel.simlab.jeqn.users.User;
 import it.uniroma2.sel.simlab.jrand.objectStreams.numericStreams.NumericStream;
 
 /**
- *	 Generator of single category service request. Implements the {@codeServiceRequestGenerator} abstract class.
+ *	 Generator of single category service request. Implements the {@code ServiceRequestGenerator} abstract class.
  * @author  Daniele Gianni
  */
 public class SingleCatServiceRequestGenerator extends ServiceRequestGenerator {

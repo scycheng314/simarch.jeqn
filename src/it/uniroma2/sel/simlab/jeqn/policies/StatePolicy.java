@@ -30,13 +30,13 @@ public interface StatePolicy<S> extends Policy {
 
     /** Retrieves the current internal state
      *
-     * @return
+     * @return The internal state
      */
     public S getState();
 
     /** Sets the internal state
      *
-     * @param s
+     * @param s the internal state
      */
     public void setState(final S s);       
 }

@@ -31,12 +31,16 @@ import it.uniroma2.sel.simlab.jeqn.policies.StateOnlyDependentPolicy;
 public class InfiniteSourceTerminationPolicy extends StateOnlyDependentPolicy<Boolean, Boolean>{
     
     /**
-     * Creates a new instance of InfiniteSourceTerminationPolicy
+     * Creates a new InfiniteSourceTerminationPolicy
      */
     public InfiniteSourceTerminationPolicy() {
         state = new Boolean(true);
     }
-
+    
+    /**
+     * Returns the decision of this policy. 
+     * @return The {@code Boolean} object that indicates whether or not the user generation has to be terminated.
+     */
     public Boolean getDecision() {
         return state;
     }

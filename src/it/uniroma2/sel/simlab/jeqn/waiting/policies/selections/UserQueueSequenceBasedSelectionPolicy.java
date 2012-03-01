@@ -33,7 +33,10 @@ import it.uniroma2.sel.simlab.jrand.objectStreams.ObjectStream;
  */
 public class UserQueueSequenceBasedSelectionPolicy extends ObjectSequencePolicy<UserQueue> {
         
-    /** Creates a new instance of NumericSequenceBasedQueueAssignmentPolicy */
+    /**
+     * Creates a new instance of NumericSequenceBasedQueueAssignmentPolicy wrapping the specified {@code ObjectStream}
+     * @param s	The wrapped stream
+     */
     public UserQueueSequenceBasedSelectionPolicy(final ObjectStream<UserQueue> s) {
         super(s);
     }

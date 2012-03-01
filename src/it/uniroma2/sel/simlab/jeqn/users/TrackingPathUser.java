@@ -24,8 +24,8 @@ package it.uniroma2.sel.simlab.jeqn.users;
 
 import java.util.ArrayList;
 
-/*
- * Defines a user with path tracking capabilities, ie able to remember all the centers and
+/**
+ * Defines a user with path tracking capabilities. The user is able to remember all the centers and
  * branches traversed during its life cycle.
  *
  * The actual functionality of this class must be checked
@@ -39,26 +39,46 @@ public class TrackingPathUser extends User {
 
     // the links between the entities
     private ArrayList<Link> links;
-
+    
+    /**
+     * Creates a new TrackingPathUser
+     */
     public TrackingPathUser() {
         super();
 
         nodes = new ArrayList<String>();
     }
-
+    
+    /**
+     * Add the specified node name to the traversed node list.
+     * @param s Node name to be added to the traversed node list.
+     */
     public void addNode(String s) {
         nodes.add(s);
         links.add(new Link(nodes.get(nodes.size() - 1), s));
     }
-
+    
+    /**
+     * Gets the name of the specified node in the ordered traversed node list.
+     * @param i	position in the traversed node list.
+     * @return The node name at the i-th position in the traversed node list.
+     */
     public String getNode(int i) {
         return nodes.get(i);
     }
-
+    
+    /**
+     * Gets the traversed node list
+     * @return The traversed node as an {@code ArrayList} of {@code String}
+     */
     public ArrayList<String> getNodes() {
         return nodes;
     }
-
+    
+    /**
+     * Gets the list of traversed link
+     * @return The list of traversed link
+     */
     public ArrayList<Link> getListOfLinks() {
 
         return links;
@@ -84,7 +104,11 @@ public class TrackingPathUser extends User {
         }
          */
     }
-
+    
+    /**
+     * Returns a string that contains the name of all traversed node.
+     * @return A string that concatenates the name of each node contained in the list of traversed nodes
+     */
     public String generateStringPath() {
         return nodes.toString();
     }

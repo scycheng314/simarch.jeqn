@@ -35,7 +35,7 @@ import it.uniroma2.sel.simlab.simcomp.basic.ports.InPort;
 import it.uniroma2.sel.simlab.simcomp.basic.ports.OutPort;
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Defines the common interface, method, and the general behaviour of single service centers.
+/** Defines the common interface, method, and the general behavior of Service Centers.
  *
  * @author  Daniele Gianni
  */
@@ -87,7 +87,16 @@ public abstract class ServiceCenter extends JEQNElement {
      */
     protected DiscretePopulationMean serviceTimeMean;
     
-    
+    /**
+     * Creates a new ServiceCenter with the specified delays
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code Time} object that contains the delay introduced when sending a processed users to the next entity.
+     * @param requestUserDelay	{@code Time} object that contains the delay introduced when sending a partially processed user back to the previous entity. 
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public ServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final Time sendingAheadDelay, final Time requestUserDelay) throws InvalidNameException {        
         super(name, timeFactory, factory);   
         
@@ -102,7 +111,7 @@ public abstract class ServiceCenter extends JEQNElement {
     }        
 
     /*
-     * defines the entity behaviour for the processing of a user
+     * defines the entity behavior as an user is to be processed
      */
     protected abstract void process(final User u) throws JEQNException;
     

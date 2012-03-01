@@ -69,10 +69,10 @@ public final class InfiniteUserQueue implements UserQueue {
     
     /**
      * Creates a new instance of InfiniteUserQueue
-     * @param decisionDataFactory The data factory to build information from the user for the insertionPolicy
-     * @param insertionPolicy The policy that decides where insert the users into the list
-     * @param userListImplementation A user list implementation
+     * @param insertionPolicy Policy that specify the position within the queue an incoming user has to be inserted
+     * @param userListImplementation list of the user currently stored in the queue
      */
+     
     public InfiniteUserQueue( final MaskBasePolicy<?, User, ?, Integer> insertionPolicy, final List<User> userListImplementation) {
         
         setEnqueuingPolicy(insertionPolicy); 

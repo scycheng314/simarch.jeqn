@@ -90,12 +90,10 @@ public class PreemptiveWaitingSystem extends WaitingSystem {
      * @param name The entity name
      * @param timeFactory The time factory to build specific time values
      * @param layer2factory An implementation of the underlying layer
-     * 
      * @param userQueue An implementation of the actual user queue data structure to store the users
      * @param requestGenerator The service request generator for the following service center
      * @param preemptionPolicy The policy for the preemption
-     * @param decisionDataFactory The data factory to build the data upon which the policy will take the decision
-     * (decision data)
+     * @param sendingAheadDelay The time delay introduced when the user is forwarded to the next entity
      * @throws it.uniroma2.info.sel.simlab.simarch.exceptions.InvalidNameException Thrown if the provided name does not conform to the underlying name conventions
      */
     public PreemptiveWaitingSystem(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final UserQueue userQueue, final ServiceRequestGenerator requestGenerator, final MaskBasePolicy<User, User, ?, Boolean> preemptionPolicy, final Time sendingAheadDelay) throws InvalidNameException {
@@ -115,9 +113,7 @@ public class PreemptiveWaitingSystem extends WaitingSystem {
      * 
      * @param userQueue An implementation of the actual user queue data structure to store the users
      * @param requestGenerator The service request generator for the following service center
-     * @param preemptionPolicy The policy for the preemption
-     * @param decisionDataFactory The data factory to build the data upon which the policy will take the decision
-     * (decision data)
+     * @param preemptionPolicy The policy for the preemption      
      * @param sendingAheadDelay The time delay introduced when the user is forwarded to the next entity
      * @throws it.uniroma2.info.sel.simlab.simarch.exceptions.InvalidNameException 
      */

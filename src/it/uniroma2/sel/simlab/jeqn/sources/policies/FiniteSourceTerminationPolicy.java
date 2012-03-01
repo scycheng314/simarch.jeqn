@@ -24,28 +24,45 @@ package it.uniroma2.sel.simlab.jeqn.sources.policies;
 
 import it.uniroma2.sel.simlab.jeqn.policies.ImplicitButNotEsplicitMaskingStateOnlyDependentPolicy;
 
-/** Implements the policy that determines the termination of a source entity execution after a specified number
- * of users has been generated
+/** Implements the user termination policy according to which the user generation terminates as a fixed number of 
+ *  of users has been generated. This policy is applicable to a {@code Source} node.
  *
+ *	@see it.uniroma2.sel.simlab.jeqn.sources.Source
  * @author Daniele Gianni
  */
 public class FiniteSourceTerminationPolicy extends ImplicitButNotEsplicitMaskingStateOnlyDependentPolicy<Integer, Boolean> {    
     
-    /** Creates a new instance of FiniteSourceTerminationPolicy */
+    /** 
+     * Creates a new FiniteSourceTerminationPolicy with the specified threshold
+     * @param counter	Indicates the number of user that have to be generated.
+     */
     public FiniteSourceTerminationPolicy(final Integer counter) {        
         super(counter);
     }
     
+    /**
+     * Returns the decision of this policy. 
+     * @return The {@code Boolean} object that indicates whether or not the user generation has to be terminated.
+     */
+     
     public Boolean getDecision() {
     	boolean decision = (getState().compareTo(0) > 0);
         setState(getState().intValue() - 1);        
         return decision;
     }
-
+    
+    /**
+     * The implicit input of this policy is not applicable. 
+     * @return A {@code null} value 
+     */
     public Void getImplicitInput() {
         return null;
     }
-
+    
+    /**
+     * The implicit input of this policy is not applicable. 
+     * v	 A {@code Void} object 
+     */    
     public void setImplicitInput(Void v) {
     }
 }

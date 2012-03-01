@@ -32,13 +32,13 @@ public interface ImplicitInputPolicy<I> extends InputPolicy {
 
     /** Accessor method for the implicit input
      *
-     * @return
+     * @return The implicit input
      */
     public I getImplicitInput();
 
     /** Accessor method for the implicit input
      *
-     * @param i
+     * @param i The implicit input
      */
     public void setImplicitInput(final I i);
         

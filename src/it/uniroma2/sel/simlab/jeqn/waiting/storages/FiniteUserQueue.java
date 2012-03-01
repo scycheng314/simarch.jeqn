@@ -53,7 +53,7 @@ public final class FiniteUserQueue implements UserQueue {
      * Create a new instance of FiniteUserQueue
      * @param userQueue An actual infinite user queue to store the users
      * @param size The max number of user that this queue can keep at the same time
-     * @param l The underlying layer implementation
+     * @param layer2 The underlying layer implementation
      */
     public FiniteUserQueue(final UserQueue userQueue, final int size, final Layer3ToLayer2 layer2) {        
         setUserQueue(userQueue);                
@@ -69,7 +69,6 @@ public final class FiniteUserQueue implements UserQueue {
      * Create a new instance of FiniteUserQueue
      * @param userQueue An actual infinite user queue to store the users
      * @param size The max number of user that this queue can keep at the same time
-     * @param l The underlying layer implementation
      */
     public FiniteUserQueue(final UserQueue userQueue, final int size) {        
         setUserQueue(userQueue);                

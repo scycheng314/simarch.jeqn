@@ -35,18 +35,29 @@ import it.uniroma2.sel.simlab.simarch.exceptions.layer2.TimeAlreadyPassedExcepti
 import it.uniroma2.sel.simlab.simarch.exceptions.layer2.UnlinkedPortException;
 import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 
-/** Implements the Create Node simulation entity, ie the entity that requests to a CreateDestroyPoolOfTokens
+/** Implements a EQN Create Node, that is the entity that requests to a CreateDestroyPoolOfTokens
  * the creation of a token
  *
  * @author Daniele Gianni
  */
 public class CreateNode extends PassiveQueueInNode {        
         
-    /** Creates a new instance of CreateNode */  
+    /** 
+     * Creates a new instance of CreateNode  
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2. 
+     * @param tokenRequestDelay The delay time introduced to process the token request
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @throws InvalidNameException InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public CreateNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double tokenRequestDelay, final double userForwardDelay) throws InvalidNameException {        
         super(name, timeFactory, layer2factory, userForwardDelay, tokenRequestDelay);         
     }
     
+    /**
+     * Contains the simulation logic of the element.
+     */
     public void body() throws JEQNException {
         
         Event event;

@@ -74,7 +74,15 @@ public abstract class PassiveQueueOutNode extends SpecialNode {
     // dismission time
     private DiscretePopulationMean meanDismissingTime;
     
-    /** Creates a new instance of PassiveQueueInNode */
+    /** Creates a new instance of PassiveQueueInNode
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @param tokenDismissDelay The delay time introduced to dismiss a token
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public PassiveQueueOutNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay, final double tokenDismissDelay) throws InvalidNameException {        
         super(name, timeFactory, layer2factory, userForwardDelay); 
         
@@ -94,6 +102,9 @@ public abstract class PassiveQueueOutNode extends SpecialNode {
         meanDismissingTime = new DiscretePopulationMean();
     }
     
+    /**
+     * Contains the simulation logic of the element.
+     */ 
     public void body() throws JEQNException {
         
         Event event;
@@ -142,30 +153,58 @@ public abstract class PassiveQueueOutNode extends SpecialNode {
         System.out.println("Number of dismissed token             : " + meanDismissingTime.sampleSize());
     }
     
+    /**
+     * Gets the port used to receive the token acknowledgments
+     * @return The port to receive the  token acknowledgments 
+     */
     public InPort getTokenAcknowledgePort() {
         return tokenAcknowledgePort;
     }
     
+    /**
+     * Gets the delay time introduced to dismiss a token
+     * @return The dismissal delay.
+     */
     public Time getTokenDismissDelay() {
         return tokenDismissDelay;
     }
     
+    /**
+     * Gets the port used to send the token dismissal requests
+     * @return The port for token dismissal requests 
+     */
     public OutPort getTokenDismissPort() {
         return tokenDismissPort;
     }
     
+    /**
+     *  Gets the delay introduced to send a processed users to the next entity.
+     *  @return The introduced delay.
+     */
     public Time getUserForwardDelay() {
         return userForwardDelay;
     }   
     
+    /**
+     * Sets the port used to receive token acknowledgments
+     * @param p The port for receiving token acknowledgments
+     */
     public void setTokenAcknowledgePort(final InPort p) {
         tokenAcknowledgePort = p;
     }
     
+    /**
+     * Sets the delay introduced to send a token dismiss request.
+     * @param t The delay to send a token dismiss request.
+     */
     public void setTokenDismissDelay(final Time t) {
         tokenDismissDelay = t;
     }
     
+    /**
+     * Sets the port used to send the token dismissal requests
+     * @param p The port for token dismissal requests
+     */
     public void setTokenDismissPort(final OutPort p) {
         tokenDismissPort = p;
     }    

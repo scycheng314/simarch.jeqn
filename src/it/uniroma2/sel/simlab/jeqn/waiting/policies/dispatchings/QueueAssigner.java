@@ -35,7 +35,7 @@ import it.uniroma2.sel.simlab.jeqn.waiting.storages.UserQueue;
 public class QueueAssigner {
 
     /*
-     * The policy that determinates on which queue the incoming users will be enqueued
+     * The policy that determines in which queue the incoming users have to be enqueued
      */
     protected MaskBasePolicy<?, User, ?, UserQueue> dispatchingPolicy;
    
@@ -44,10 +44,19 @@ public class QueueAssigner {
         setDispatchingPolicy(dispatchingPolicy);
     }
     
+    /**
+     * Gets the queue in which the specified user has to be enqueued
+     * @param u The incoming user
+     * @return The queue selected by the dispatching policy
+     */
     public UserQueue getUserQueue(final User u) {        
         return dispatchingPolicy.getDecisionFor(u);
     }
-
+    
+    /**
+     * Sets the policy used to select the queue in which incoming users have to be enqueued
+     * @param p The new dispatching policy
+     */
     private void setDispatchingPolicy(MaskBasePolicy<?, User, ?, UserQueue> p) {
         dispatchingPolicy = p;
     }

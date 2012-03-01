@@ -24,7 +24,7 @@ package it.uniroma2.sel.simlab.jeqn.tokens;
 
 import it.uniroma2.sel.simlab.jeqn.general.JEQNName;
 
-/** Defines the general skelethon for a token class
+/** Defines the general skeleton for a class that implements a Token
  *
  * @author Daniele Gianni
  */
@@ -36,23 +36,44 @@ public class Token<T> {
     // the value identifying the token
     private T value;
     
+    /**
+     * Create a new Token instance.
+     * @param t The value associated to the token.
+     * @param resourceName The name of the resource the token is associated with
+     */
     public Token(final T t, final JEQNName resourceName) {
         setResourceName(resourceName);
         setValue(t);        
     }
     
+    /**
+     * Gets the resource the token is associated with
+     * @return Resource name
+     */
     public JEQNName getResourceName() {
         return resourceName;        
     }
     
+    /**
+     * Gets the token value.
+     * @return Token value.
+     */
     public T getValue() {
         return value;
     }
     
+    /**
+     * Sets the name of the resource the token is associated with
+     * @param s	Resource name.
+     */
     public void setResourceName(final JEQNName s) {
         resourceName = s;
     }
     
+    /**
+     * Sets the token value.
+     * @param t Token value.
+     */
     public void setValue(final T t) {
         value = t;
     }

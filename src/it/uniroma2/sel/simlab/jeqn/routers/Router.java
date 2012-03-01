@@ -112,7 +112,7 @@ public class Router extends JEQNElement {
      * @param tdelay	delay introduced by the router to propagate an user to the output port. 
      * @param numberOfOutPorts	{@code Integer} object that specifies the number of output ports.
      * @param routingPolicy	{@code MaskBasePolicy} object that implements the policy used to determine the the output port to which incoming users are to be routed. 
-     * @throws InvalidNameException	n InvalidNameException is raised when an issue concerning the element name occurs.
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
      * 
      */
      

@@ -40,7 +40,7 @@ import it.uniroma2.sel.simlab.simarch.factories.Layer3ToLayer2Factory;
 
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Implements Service Center that operates with Non-Preemptive policy, i.e. the processing of a user is
+/** Implements an EQN Service Center that operates with a Non-Preemptive policy, i.e. the processing of a user is
  * not interrupted by incoming user with higher priorities
  *
  * @author  Daniele Gianni
@@ -123,8 +123,13 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     protected boolean userInProcessing;
     
     /**
-     * Creates a new instance of NonPreemptiveServiceCenter
-     */
+     * Creates a new NonPreemptiveServiceCenter
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     * 
+     */    
     public NonPreemptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory) throws InvalidNameException {        
         super(name, timeFactory, factory, timeFactory.makeFrom(Time.ZERO), timeFactory.makeFrom(Time.ZERO));
         
@@ -132,8 +137,16 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     }
 
     /**
-     * Creates a new instance of NonPreemptiveServiceCenter
+     * Creates a new NonPreemptiveServiceCenter with the specified delays
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code Time} object that contains the delay introduced when sending a processed users to the next entity.
+     * @param requestDelay	{@code Time} object that contains the delay introduced when sending a partially processed user back to the previous entity. 
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
      */
+     
     public NonPreemptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final Time sendingAheadDelay, final Time requestDelay) throws InvalidNameException {
         super(name, timeFactory, factory, sendingAheadDelay, requestDelay);
 
@@ -141,8 +154,15 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     }
 
     /**
-     * Creates a new instance of NonPreemptiveServiceCenter
-     */
+     * Creates a new NonPreemptiveServiceCenter with the delays specified as a {@code double}
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code double} object that contains the delay introduced when sending a processed users to the next entity.
+     * @param requestDelay	{@code double} object that contains the delay introduced when sending a partially processed user back to the previous entity. 
+     * @throws InvalidNameException	An InvalidNameException is raised when an issue concerning the element name occurs.
+     */     
     public NonPreemptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final double sendingAheadDelay, final double requestDelay) throws InvalidNameException {        
         super(name, timeFactory, factory, timeFactory.makeFrom(sendingAheadDelay), timeFactory.makeFrom(requestDelay));
         
@@ -150,8 +170,14 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     }
 
     /**
-     * Creates a new instance of NonPreemptiveServiceCenter
-     */
+     * Creates a new NonPreemptiveServiceCenter with the delay specified as a {@code double}
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code double} object that contains the delay introduced when sending a processed users to the next entity.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */     
     public NonPreemptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final double sendingAheadDelay) throws InvalidNameException {
         super(name, timeFactory, factory, timeFactory.makeFrom(sendingAheadDelay), timeFactory.makeFrom(Time.ZERO));
 
@@ -159,8 +185,14 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     }
 
     /**
-     * Creates a new instance of NonPreemptiveServiceCenter
-     */
+     * Creates a new NonPreemptiveServiceCenter with the specified delay
+     * 
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param sendingAheadDelay	{@code Time} object that contains the delay introduced when sending a processed users to the next entity.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */ 
     public NonPreemptiveServiceCenter(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory factory, final Time sendingAheadDelay) throws InvalidNameException {        
         super(name, timeFactory, factory, sendingAheadDelay, timeFactory.makeFrom(Time.ZERO));
         
@@ -199,6 +231,7 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
         
         userInProcessing = false;
     }
+    
     
     public void body() throws JEQNException {
         
@@ -367,7 +400,11 @@ public class NonPreemptiveServiceCenter extends ServiceCenter {
     		}
     	}
     }
-
+    /*
+     * Method that process the incoming user.
+     * A service center holds an user for an amount of time according to the value generated by the service request generator.
+     * @see it.uniroma2.sel.simlab.jeqn.serviceCenters.ServiceCenter#process(it.uniroma2.sel.simlab.jeqn.users.User)
+     */
     protected void process(final User u) throws JEQNException {
                         
         Time sendingDelay = sendingAheadDelay.increasedBy(u.getServiceRequest().getValue());

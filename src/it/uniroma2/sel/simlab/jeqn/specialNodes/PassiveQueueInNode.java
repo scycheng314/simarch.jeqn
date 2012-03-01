@@ -31,7 +31,7 @@ import it.uniroma2.sel.simlab.simcomp.basic.ports.InPort;
 import it.uniroma2.sel.simlab.simcomp.basic.ports.OutPort;
 import it.uniroma2.sel.simlab.statistics.estimators.DiscretePopulationMean;
 
-/** Defines the common structure for nodes (Allocate and Create) that regulare the access to
+/** Defines the common structure for nodes (Allocate and Create) that regulate the access to
  * a passive queue zone
  *
  * @author Daniele Gianni
@@ -70,7 +70,14 @@ public abstract class PassiveQueueInNode extends SpecialNode {
      */
     protected DiscretePopulationMean meanRequestTime;
     
-    /** Creates a new instance of PassiveQueueInNode */   
+    /** 
+     * Creates a new instance of PassiveQueueInNode   
+     * @param name Element name. The name is used to identify entities within the simulation model.
+     * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+     * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+     * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+     * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+     */
     public PassiveQueueInNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay) throws InvalidNameException {        
         super(name, timeFactory, layer2factory, userForwardDelay);            
         
@@ -78,7 +85,15 @@ public abstract class PassiveQueueInNode extends SpecialNode {
         
         init();
     }
-    
+     /**
+      * Creates a new instance of PassiveQueueInNode   
+      * @param name Element name. The name is used to identify entities within the simulation model.
+      * @param timeFactory	Instances the jEQN time object that contains the value for the simulation time.
+      * @param layer2factory	According to the Factory pattern, factory is used to instantiates the implementation of Layer3ToLayer2 interface, which provides level 3 services to level 2.
+      * @param userForwardDelay The delay introduced to send a processed users to the next entity.
+      * @param tokenRequestDelay The delay time introduced to process the token request.
+      * @throws InvalidNameException An InvalidNameException is raised when an issue concerning the element name occurs.
+      */
     public PassiveQueueInNode(final JEQNName name, final JEQNTimeFactory timeFactory, final Layer3ToLayer2Factory layer2factory, final double userForwardDelay, final double tokenRequestDelay) throws InvalidNameException {        
         super(name, timeFactory, layer2factory, userForwardDelay);            
         
@@ -98,30 +113,56 @@ public abstract class PassiveQueueInNode extends SpecialNode {
         meanRequestTime = new DiscretePopulationMean();
     }
     
+    /**
+     * Gets the port used to receive the token acknowledgements
+     * @return The port to receive the  token acknowledgements 
+     */
     public InPort getTokenAcknowledgePort() {
         return tokenAcknowledgePort;
     }
     
+    /**
+     * Gets the delay time introduced to send the token request.
+     * @return The introduced delay
+     */
     public Time getTokenRequestDelay() {
         return tokenRequestDelay;
     }
     
+    /**
+     * Gets the port to request a token to the token pool.
+     * @return The port to request a token.
+     */
     public OutPort getTokenRequestPort() {
         return tokenRequestPort;
     }
     
+    /**
+     *  Gets the delay introduced to send a processed users to the next entity.
+     *  @return The introduced delay.
+     */
     public Time getUserForwardDelay() {
         return userForwardDelay;
     }   
     
+    /**
+     * Sets the port used to receive token acknowledgements
+     * @param p The port for receiving token acknowledgements
+     */
     public void setTokenAcknowledgePort(InPort p) {
         tokenAcknowledgePort = p;
     }
-    
+    /**
+     * Sets the delay time introduced to send the token request.
+     * @param t Delay introduced for a token request.
+     */
     public void setTokenRequestDelay(Time t) {
         tokenRequestDelay = t;
     }
-    
+    /**
+     * Sets the delay introduced to send a processed users to the next entity.
+     * @param p Delay introduced for forwarding an user
+     */
     public void setTokenRequestPort(final OutPort p) {
         tokenRequestPort = p;
     }    
